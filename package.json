@@ -1,0 +1,22 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "A highly original todo app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shgysk8zer0/todo-app.git"
+  },
+  "author": "Chris Zuber <shgysk8zer0@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/shgysk8zer0/todo-app/issues"
+  },
+  "homepage": "https://github.com/shgysk8zer0/todo-app#readme",
+  "dependencies": {
+    "node-purist": "github:shgysk8zer0/node-purist"
+  }
+}

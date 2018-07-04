@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Todo App</title>
+    <script type="module" src="js/index.js" async=""></script>
+    <link rel="stylesheet" href="css/styles/index.css" media="all" />
+  </head>
+  <body class="background-primary color-default border-box font-main">
+    <todo-app></todo-app>
+    <template id="todo-app-template">
+      <todo-list></todo-list>
+      <todo-form></todo-form>
+    </template>
+    <template id="todo-item-template">
+      <div class="todo-item">
+        <span data-field="label"></span>
+        <time datetime="" data-field="due"></time>
+        <button type="button" data-action="done">&check;</button>
+        <button type="button" data-action="remove">-</button>
+      </div>
+    </template>
+    <template id="todo-form-template">
+      <form name="addItem">
+        <input type="text" name="label" placeholder="Item label" required="" />
+        <input type="date" name="due" />
+        <button type="submit">+</button>
+      </form>
+    </template>
+  </body>
+</html>

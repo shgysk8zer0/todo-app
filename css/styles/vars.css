@@ -1,0 +1,14 @@
+:root {
+  --primary-color: #FEFEFE;
+  --default-color: #343434;
+  --main-font: Roboto;
+  --alt-color: #FAFAFA;
+  --button-background: rgb(60, 189, 40);
+  --button-color: var(--alt-color);
+  --button-border: none;
+  --button-border-radius: 0.3em;
+  --button-padding: 0.4em 0.7em;
+  --button-active-background: rgb(5, 116, 9);
+  --button-active-color: var(--button-color);
+  --button-active-border: var(--button-border);
+}
