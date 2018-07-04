@@ -1,4 +1,5 @@
 import TodoItem from './TodoItem.js';
+
 export default class TodoList extends HTMLElement
 {
 	add({label = 'No label', due = null} = {}) {
@@ -19,3 +20,5 @@ export default class TodoList extends HTMLElement
 		return [...this.querySelectorAll('todo-item')];
 	}
 }
+
+customElements.define('todo-list', TodoList);

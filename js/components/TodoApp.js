@@ -44,3 +44,5 @@ export default class TodoApp extends HTMLElement {
 		return this.list.add(...args);
 	}
 }
+
+customElements.define('todo-app', TodoApp);

@@ -4,25 +4,26 @@ export default class TodoItem extends HTMLElement {
 	constructor() {
 		super();
 
-		const tmp = this.template;
-		$('[data-action="remove"]', tmp).click(() => this.remove());
-		$('[data-action="done"]', tmp).click(() => {
-			this.classList.toggle('item-done');
+		this.getTemplate().then(tmp => {
+			$('[data-action="remove"]', tmp).click(() => this.remove());
+			$('[data-action="done"]', tmp).click(() => {
+				this.classList.toggle('item-done');
+			});
+			this.shadow = this.attachShadow({mode: 'open'}).appendChild(tmp);
+
+			if (! (this.querySelector('[slot="label"]') instanceof HTMLElement)) {
+				const label = document.createElement('b');
+				label.slot = 'label';
+				label.textContent = 'No label';
+				this.append(label);
+			}
+
+			if (! (this.querySelector('[slot="due"]') instanceof HTMLElement)) {
+				const due = document.createElement('time');
+				due.slot = 'due';
+				this.append(due);
+			}
 		});
-		this.shadow = this.attachShadow({mode: 'open'}).appendChild(tmp);
-
-		if (! (this.querySelector('[slot="label"]') instanceof HTMLElement)) {
-			const label = document.createElement('b');
-			label.slot = 'label';
-			label.textContent = 'No label';
-			this.append(label);
-		}
-
-		if (! (this.querySelector('[slot="due"]') instanceof HTMLElement)) {
-			const due = document.createElement('time');
-			due.slot = 'due';
-			this.append(due);
-		}
 	}
 
 	delete() {
@@ -51,7 +52,22 @@ export default class TodoItem extends HTMLElement {
 		return new Date(due.datetime);
 	}
 
-	get template() {
-		return document.getElementById('todo-item-template').content.cloneNode(true);
+	async getTemplate() {
+		const template = document.getElementById('todo-item-template') || null;
+
+		if (template instanceof HTMLElement) {
+			return template.content.cloneNode(true);
+		} else {
+			const url = new URL('templates/todo-form.html', document.baseURI);
+			const resp = await fetch(url);
+			const html = await resp.text();
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, 'text/html');
+			const tmp = doc.querySelector('template');
+			document.body.append(tmp);
+			return tmp.content.cloneNode(true);
+		}
 	}
 }
+
+customElements.define('todo-item', TodoItem);
