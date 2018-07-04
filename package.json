@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/shgysk8zer0/todo-app#readme",
   "dependencies": {
-    "node-purist": "github:shgysk8zer0/node-purist"
+    "svg-sprite-generator": "0.0.7"
   }
 }
