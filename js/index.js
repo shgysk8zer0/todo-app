@@ -1,6 +1,6 @@
 import './std-js/deprefixer.js';
 import './std-js/shims.js';
-import {$, ready} from './std-js/functions.js';
+import {$, ready, registerServiceWorker} from './std-js/functions.js';
 import TodoApp from './components/TodoApp.js';
 import TodoList from './components/TodoList.js';
 import TodoItem from './components/TodoItem.js';
@@ -13,4 +13,7 @@ customElements.define('todo-form', TodoForm);
 
 ready().then(async () => {
 	$(document.documentElement).replaceClass('no-js', 'js');
+	if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
+		registerServiceWorker(document.documentElement.dataset.serviceWorker);
+	}
 });

@@ -1,0 +1,32 @@
+{
+	"version": "1.0.0",
+	"name": "todo-app",
+	"short_name": "todo-app",
+	"description": "A highly original todo-app",
+	"start_url": "/",
+	"lang": "en",
+	"display": "standalone",
+	"theme_color": "#2084ff",
+	"background_color": "#242424",
+	"icons": [{
+      "src":"/img/favicon.svg",
+      "sizes":"any",
+      "type":"image/svg+xml"
+    }, {
+      "src":"/img/icon-512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }, {
+      "src":"/img/icon-192.png",
+      "sizes":"192x192",
+      "type":"image/png"
+  }],
+	"screenshots": [{
+    "src":"https://i.imgur.com/uRKaQQQl.png",
+    "sizes":"640x354","type":"image/png"
+  }],
+	"developer": {
+		"name": "Chris Zuber",
+		"url": "http://shgysk8zer0.github.io"
+	}
+}
