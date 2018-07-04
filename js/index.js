@@ -29,10 +29,7 @@ ready().then(async () => {
 		registerServiceWorker(document.documentElement.dataset.serviceWorker);
 	}
 
-	await Promise.all([
-		TodoApp.ready(),
-		loadTemplates('todo-item', 'todo-form'),
-	]);
+	await loadTemplates('todo-item', 'todo-form');
 
 	document.body.append(new TodoApp());
 });

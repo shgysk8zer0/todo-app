@@ -1,3 +1,6 @@
+import TodoList from './TodoList.js';
+import TodoForm from './TodoForm.js';
+
 export default class TodoApp extends HTMLElement {
 	constructor() {
 		super();
@@ -14,10 +17,8 @@ export default class TodoApp extends HTMLElement {
 	}
 
 	async init() {
-		const list = await TodoApp.getCustomElement('todo-list');
-		const form = await TodoApp.getCustomElement('todo-form');
-		// this.shadow = this.attachShadow({mode: 'open'}).append(list, form);
-		this.append(list, form);
+		await TodoApp.ready();
+		this.append(new TodoList(), new TodoForm());
 		this.dispatchEvent(new CustomEvent('ready'));
 	}
 
