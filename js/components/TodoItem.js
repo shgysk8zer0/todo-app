@@ -58,7 +58,7 @@ export default class TodoItem extends HTMLElement {
 		if (template instanceof HTMLElement) {
 			return template.content.cloneNode(true);
 		} else {
-			const url = new URL('templates/todo-form.html', document.baseURI);
+			const url = new URL('templates/todo-item.html', document.baseURI);
 			const resp = await fetch(url);
 			const html = await resp.text();
 			const parser = new DOMParser();
