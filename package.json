@@ -1,10 +1,18 @@
 {
   "name": "todo-app",
   "version": "1.0.0",
+  "private": true,
   "description": "A highly original todo app",
-  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint css/",
+    "build:icons": "svg-sprite-generate -c img/icons.csv -o img/icons.svg",
+    "build": "npm run build:icons",
+    "serve": "python -m SimpleHTTPServer 8000",
+    "postinstall": "npm run build",
+    "test": "npm run lint",
+    "start": "npm run build && npm run serve"
   },
   "repository": {
     "type": "git",
@@ -18,5 +26,11 @@
   "homepage": "https://github.com/shgysk8zer0/todo-app#readme",
   "dependencies": {
     "svg-sprite-generator": "0.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-plugin-async-await": "0.0.0",
+    "stylelint": "^9.3.0",
+    "svgo": "^1.0.5"
   }
 }

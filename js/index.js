@@ -10,3 +10,7 @@ customElements.define('todo-app', TodoApp);
 customElements.define('todo-list', TodoList);
 customElements.define('todo-item', TodoItem);
 customElements.define('todo-form', TodoForm);
+
+ready().then(async () => {
+	$(document.documentElement).replaceClass('no-js', 'js');
+});

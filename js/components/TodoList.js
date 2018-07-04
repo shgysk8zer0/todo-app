@@ -1,21 +1,21 @@
 import TodoItem from './TodoItem.js';
 export default class TodoList extends HTMLElement
 {
-  add({label = 'No label', due = null} = {}) {
-    const item = new TodoItem;
-    this.append(item);
-    item.label = label;
-    if (due instanceof Date) {
-      item.due = due;
-    }
-    return item;
-  }
+	add({label = 'No label', due = null} = {}) {
+		const item = new TodoItem;
+		this.append(item);
+		item.label = label;
+		if (due instanceof Date) {
+			item.due = due;
+		}
+		return item;
+	}
 
-  clear() {
-    this.items.forEach(item => item.remove());
-  }
+	clear() {
+		this.items.forEach(item => item.remove());
+	}
 
-  get items() {
-    return [...this.querySelectorAll('todo-item')];
-  }
+	get items() {
+		return [...this.querySelectorAll('todo-item')];
+	}
 }
