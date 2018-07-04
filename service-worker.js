@@ -18,6 +18,7 @@ const config = {
 		'/css/',
 		'/img/',
 		'/fonts/',
+		'/templates/',
 	],
 	hosts: [
 		'secure.gravatar.com',
