@@ -20,6 +20,7 @@ export default class TodoApp extends HTMLElement {
 		await TodoApp.ready();
 		this.append(new TodoList(), new TodoForm());
 		this.dispatchEvent(new CustomEvent('ready'));
+		this.list.addEventListener('itemRemoved', () => this.dispatchEvent(new CustomEvent('itemRemoved')));
 	}
 
 	static async getCustomElement(tag, ...args) {
@@ -30,6 +31,7 @@ export default class TodoApp extends HTMLElement {
 
 	clear() {
 		this.list.clear();
+		this.dispatchEvent(new CustomEvent('cleared'));
 	}
 
 	get list() {
@@ -41,7 +43,9 @@ export default class TodoApp extends HTMLElement {
 	}
 
 	add(...args) {
-		return this.list.add(...args);
+		const details = this.list.add(...args);
+		this.dispatchEvent(new CustomEvent('itemAdded', {details}));
+		return details;
 	}
 }
 

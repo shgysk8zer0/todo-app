@@ -1,7 +1,9 @@
 import {$} from '../std-js/functions.js';
 
 export default class TodoItem extends HTMLElement {
-	constructor() {
+	constructor(label = null, {
+		due = null,
+	} = {}) {
 		super();
 
 		this.getTemplate().then(tmp => {
@@ -11,17 +13,28 @@ export default class TodoItem extends HTMLElement {
 			});
 			this.shadow = this.attachShadow({mode: 'open'}).appendChild(tmp);
 
-			if (! (this.querySelector('[slot="label"]') instanceof HTMLElement)) {
-				const label = document.createElement('b');
-				label.slot = 'label';
-				label.textContent = 'No label';
-				this.append(label);
+			if (label) {
+				const labelEl = document.createElement('b');
+				labelEl.textContent = label;
+				labelEl.slot = 'label';
+				this.append(labelEl);
+			} else if (! (this.querySelector('[slot="label"]') instanceof HTMLElement)) {
+				const labelEl = document.createElement('b');
+				labelEl.slot = 'label';
+				labelEl.textContent = 'No label';
+				this.append(labelEl);
 			}
 
-			if (! (this.querySelector('[slot="due"]') instanceof HTMLElement)) {
-				const due = document.createElement('time');
-				due.slot = 'due';
-				this.append(due);
+			if (due instanceof Date) {
+				const dueEl = document.createElement('time');
+				dueEl.textContent = due.toLocaleDateString();
+				dueEl.datetime = due;
+				dueEl.slot = 'due';
+				this.append(dueEl);
+			} else if (! (this.querySelector('[slot="due"]') instanceof HTMLElement)) {
+				const dueEl = document.createElement('time');
+				dueEl.slot = 'due';
+				this.append(dueEl);
 			}
 		});
 	}

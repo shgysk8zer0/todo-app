@@ -22,6 +22,10 @@ ready().then(async () => {
 	}
 
 	// await loadTemplates('todo-item', 'todo-form');
+	const app = new TodoApp();
+	document.body.append(app);
 
-	document.body.append(new TodoApp());
+	app.addEventListener('itemAdded', console.info);
+	app.addEventListener('itemRemoved', console.info);
+	app.addEventListener('clear', console.info);
 });

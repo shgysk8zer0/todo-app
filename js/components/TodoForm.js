@@ -2,14 +2,13 @@ export default class TodoForm extends HTMLElement {
 	constructor() {
 		super();
 		this.getTemplate().then(template => {
-			console.log(template);
 			template.querySelector('form').addEventListener('submit', async event => {
 				event.preventDefault();
 				const item = new FormData(event.target);
 				const list = this.closest('todo-app').querySelector('todo-list');
 				list.add({
 					label: item.get('label'),
-					due: item.get('due'),
+					due: item.has('due') ? new Date(item.get('due')) : null,
 				});
 				event.target.reset();
 			});

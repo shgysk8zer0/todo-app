@@ -14,12 +14,17 @@
     }
   </style>
   <div class="todo-item">
-    <span class="item-label"><slot name="label"></slot></span>
+  	<button type="button" data-action="done">
+      <svg class="current-color icon">
+        <use xlink:href="img/icons.svg#check" />
+      </svg>
+    </button>
+    <span class="item-label"><slot name="label">No Label</slot></span>
     <span>
       <svg class="current-color icon">
         <use xlink:href="img/icons.svg#calendar" />
       </svg>
-      <slot name="due"></slot>
+      <slot name="due">No due date</slot>
       <details>
         <summary>
           <svg class="current-color icon">
@@ -27,14 +32,9 @@
           </svg>
         </summary>
       </details>
-      <div><slot name="description"></slot></div>
+      <div><slot name="description">No Description</slot></div>
     </span>
     <span>
-      <button type="button" data-action="done">
-        <svg class="current-color icon">
-          <use xlink:href="img/icons.svg#check" />
-        </svg>
-      </button>
       <button type="button" data-action="remove">
         <svg class="current-color icon">
           <use xlink:href="img/icons.svg#x" />

@@ -3,12 +3,8 @@ import TodoItem from './TodoItem.js';
 export default class TodoList extends HTMLElement
 {
 	add({label = 'No label', due = null} = {}) {
-		const item = new TodoItem;
+		const item = new TodoItem(label, {due});
 		this.append(item);
-		item.label = label;
-		if (due instanceof Date) {
-			item.due = due;
-		}
 		return item;
 	}
 
