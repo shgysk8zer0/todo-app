@@ -15,10 +15,12 @@
     </template>
     <template id="todo-item-template">
       <div class="todo-item">
-        <span data-field="label"></span>
-        <time datetime="" data-field="due"></time>
-        <button type="button" data-action="done">&check;</button>
-        <button type="button" data-action="remove">-</button>
+        <span class="item-label"><slot name="label"></slot></span>
+        <span><slot name="due"></slot></span>
+        <span>
+          <button type="button" data-action="done">&check;</button>
+          <button type="button" data-action="remove">-</button>
+        </span>
       </div>
     </template>
     <template id="todo-form-template">

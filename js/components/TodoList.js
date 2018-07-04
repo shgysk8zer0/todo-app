@@ -1,10 +1,6 @@
 import TodoItem from './TodoItem.js';
 export default class TodoList extends HTMLElement
 {
-  constructor() {
-    super();
-  }
-
   add({label = 'No label', due = null} = {}) {
     const item = new TodoItem;
     this.append(item);
