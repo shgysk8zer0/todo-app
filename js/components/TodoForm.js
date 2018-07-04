@@ -5,6 +5,7 @@ export default class TodoForm extends HTMLElement {
 		this.querySelector('form').addEventListener('submit', async event => {
 			event.preventDefault();
 			const item = new FormData(event.target);
+			console.log(this.parentElement);
 			const list = this.closest('todo-app').querySelector('todo-list');
 			list.add({
 				label: item.get('label'),

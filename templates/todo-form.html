@@ -1,0 +1,16 @@
+<template id="todo-form-template">
+  <form name="addItem">
+    <input type="text" name="label" placeholder="Item label" required="" />
+    <label>
+      <svg class="current-color icon">
+        <use xlink:href="img/icons.svg#calendar" />
+      </svg>
+      <input type="date" name="due" />
+    </label>
+    <button type="submit">
+      <svg class="current-color icon">
+        <use xlink:href="img/icons.svg#plus" />
+      </svg>
+    </button>
+  </form>
+</template>
