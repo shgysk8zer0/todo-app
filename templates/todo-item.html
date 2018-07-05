@@ -2,6 +2,7 @@
   <style>
   	button, [role="button"], .btn {
   		display: inline-block;
+  		cursor: pointer;
   		padding: 0.3em;
   		background: var(--button-background);
   		color: var(--button-color);
@@ -33,26 +34,18 @@
   </style>
   <div class="todo-item">
   	<button type="button" data-action="done">
-      <svg class="current-color icon">
-        <use xlink:href="img/icons.svg#check" />
-      </svg>
+      <svg-icon icon="check"></svg-icon>
     </button>
     <slot name="label">No Label</slot>
     <span>
-      <svg class="current-color icon">
-        <use xlink:href="img/icons.svg#calendar" />
-      </svg>
+      <svg-icon icon="calendar"></svg-icon>
       <slot name="due"></slot>
       <button type="button" data-action="remove" class="btn-danger">
-        <svg class="current-color icon">
-          <use xlink:href="img/icons.svg#x" />
-        </svg>
+        <svg-icon icon="x"></svg-icon>
       </button>
       <details>
         <summary>
-          <svg class="current-color icon">
-            <use xlink:href="img/icons.svg#view-more" />
-          </svg>
+          <svg-icon icon="view-more"></svg-icon>
         </summary>
         <slot name="description">No Description</slot>
       </details>
