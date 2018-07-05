@@ -1,5 +1,18 @@
 <template id="todo-item-template">
   <style>
+  	button, [role="button"], .btn {
+  		display: inline-block;
+  		padding: 0.3em;
+  		background: var(--button-background);
+  		color: var(--button-color);
+  		border: var(--button-border);
+  		border-radius: var(--button-border-radius);
+  	}
+
+  	.btn-danger {
+  		background: var(--button-danger-background);
+  	}
+
     .current-color {
       fill: currentColor;
     }
@@ -12,6 +25,11 @@
     	height: 1em;
     	vertical-align: middle;
     }
+
+    .item-done {
+    	color: #878787;
+    	text-decoration: line-through;
+    }
   </style>
   <div class="todo-item">
   	<button type="button" data-action="done">
@@ -19,27 +37,25 @@
         <use xlink:href="img/icons.svg#check" />
       </svg>
     </button>
-    <span class="item-label"><slot name="label">No Label</slot></span>
+    <slot name="label">No Label</slot>
     <span>
       <svg class="current-color icon">
         <use xlink:href="img/icons.svg#calendar" />
       </svg>
-      <slot name="due">No due date</slot>
+      <slot name="due"></slot>
+      <button type="button" data-action="remove" class="btn-danger">
+        <svg class="current-color icon">
+          <use xlink:href="img/icons.svg#x" />
+        </svg>
+      </button>
       <details>
         <summary>
           <svg class="current-color icon">
             <use xlink:href="img/icons.svg#view-more" />
           </svg>
         </summary>
+        <slot name="description">No Description</slot>
       </details>
-      <div><slot name="description">No Description</slot></div>
-    </span>
-    <span>
-      <button type="button" data-action="remove">
-        <svg class="current-color icon">
-          <use xlink:href="img/icons.svg#x" />
-        </svg>
-      </button>
     </span>
   </div>
 </template>

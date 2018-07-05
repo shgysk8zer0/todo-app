@@ -12,6 +12,10 @@ export default class TodoList extends HTMLElement
 		this.items.forEach(item => item.remove());
 	}
 
+	clearCompleted() {
+		this.items.filter(item => item.done).forEach(item => item.remove());
+	}
+
 	get items() {
 		return [...this.querySelectorAll('todo-item')];
 	}

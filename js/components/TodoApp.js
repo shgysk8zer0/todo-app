@@ -1,5 +1,6 @@
 import TodoList from './TodoList.js';
 import TodoForm from './TodoForm.js';
+import SVGIcon from './SVGIcon.js';
 
 export default class TodoApp extends HTMLElement {
 	constructor() {
@@ -13,12 +14,21 @@ export default class TodoApp extends HTMLElement {
 			customElements.whenDefined('todo-list'),
 			customElements.whenDefined('todo-form'),
 			customElements.whenDefined('todo-item'),
+			customElements.whenDefined('svg-icon'),
 		]);
 	}
 
 	async init() {
 		await TodoApp.ready();
-		this.append(new TodoList(), new TodoForm());
+		const header = document.createElement('header');
+		const list = new TodoList();
+		const form = new TodoForm();
+		const clearCompleted = document.createElement('button');
+		clearCompleted.append(new SVGIcon('refresh'));
+
+		header.append(clearCompleted);
+		clearCompleted.addEventListener('click', () => this.clearCompleted());
+		this.append(header, list, form);
 		this.dispatchEvent(new CustomEvent('ready'));
 		this.list.addEventListener('itemRemoved', () => this.dispatchEvent(new CustomEvent('itemRemoved')));
 	}
@@ -32,6 +42,10 @@ export default class TodoApp extends HTMLElement {
 	clear() {
 		this.list.clear();
 		this.dispatchEvent(new CustomEvent('cleared'));
+	}
+
+	clearCompleted() {
+		this.list.clearCompleted();
 	}
 
 	get list() {

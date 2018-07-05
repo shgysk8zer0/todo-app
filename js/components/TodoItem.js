@@ -9,7 +9,7 @@ export default class TodoItem extends HTMLElement {
 		this.getTemplate().then(tmp => {
 			$('[data-action="remove"]', tmp).click(() => this.remove());
 			$('[data-action="done"]', tmp).click(() => {
-				this.classList.toggle('item-done');
+				this.done = ! this.done;
 			});
 			this.shadow = this.attachShadow({mode: 'open'}).appendChild(tmp);
 
@@ -63,6 +63,14 @@ export default class TodoItem extends HTMLElement {
 	get due() {
 		const due = this.querySelector('[slot="due"]');
 		return new Date(due.datetime);
+	}
+
+	set done(completed) {
+		this.shadowRoot.querySelector('.todo-item').classList.toggle('item-done', completed);
+	}
+
+	get done() {
+		return this.shadowRoot.querySelector('.todo-item').classList.contains('item-done');
 	}
 
 	async getTemplate() {

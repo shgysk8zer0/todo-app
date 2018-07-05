@@ -4,6 +4,7 @@
 	--main-font: Roboto;
 	--alt-color: #FAFAFA;
 	--button-background: rgb(60, 189, 40);
+	--button-danger-background: #D63030;
 	--button-color: var(--alt-color);
 	--button-border: none;
 	--button-border-radius: 0.3em;
