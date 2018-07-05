@@ -17,5 +17,3 @@ export default class SVGIcon extends HTMLElement {
 		this.setAttribute('icon', icon);
 	}
 }
-
-customElements.define('svg-icon', SVGIcon);

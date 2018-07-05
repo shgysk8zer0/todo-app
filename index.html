@@ -14,12 +14,16 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="img/icon-16.png">
 		<link rel="manifest" href="manifest.json">
 		<link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#2084ff">
-		<link rel="prefetch import" name="test" href="test.html" />
+		<link rel="prefetch import" name="header" href="components/header.html" />
+		<link rel="prefetch import" name="footer" href="components/footer.html" />
 		<link rel="prefetch import" name="svg-icon-template" href="templates/svg-icon.html" as="text/html" />
 		<link rel="prefetch import" name="todo-form-template" href="templates/todo-form.html" as="text/html" />
 		<link rel="prefetch import" name="todo-item-template" href="templates/todo-item.html" as="text/html" />
 	</head>
 	<body class="background-primary color-default border-box font-main">
+		<html-import imports="header"></html-import>
+		<todo-app></todo-app>
+		<html-import imports="footer"></html-import>
 		<html-import id="templates" imports="svg-icon-template todo-form-template todo-item-template" replace=""></html-import>
 	</body>
 </html>

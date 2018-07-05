@@ -33,5 +33,3 @@ export default class TodoForm extends HTMLElement {
 		}
 	}
 }
-
-customElements.define('todo-form', TodoForm);

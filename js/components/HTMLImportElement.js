@@ -38,5 +38,3 @@ export default class HTMLImportElement extends HTMLElement {
 		}
 	}
 }
-
-customElements.define('html-import', HTMLImportElement);

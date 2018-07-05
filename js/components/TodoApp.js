@@ -1,6 +1,11 @@
 import TodoList from './TodoList.js';
 import TodoForm from './TodoForm.js';
+import TodoItem from './TodoItem.js';
 import SVGIcon from './SVGIcon.js';
+
+customElements.define('todo-list', TodoList);
+customElements.define('todo-form', TodoForm);
+customElements.define('todo-item', TodoItem);
 
 export default class TodoApp extends HTMLElement {
 	constructor() {
@@ -62,5 +67,3 @@ export default class TodoApp extends HTMLElement {
 		return details;
 	}
 }
-
-customElements.define('todo-app', TodoApp);

@@ -90,5 +90,3 @@ export default class TodoItem extends HTMLElement {
 		}
 	}
 }
-
-customElements.define('todo-item', TodoItem);

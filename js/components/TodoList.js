@@ -20,5 +20,3 @@ export default class TodoList extends HTMLElement
 		return [...this.querySelectorAll('todo-item')];
 	}
 }
-
-customElements.define('todo-list', TodoList);
