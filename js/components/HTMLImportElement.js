@@ -11,13 +11,31 @@ export default class HTMLImportElement extends HTMLElement {
 				return link.import;
 			}
 		})).then(content => {
-			content.forEach(node => this.append(node));
+			if (this.replace) {
+				const frag = document.createDocumentFragment();
+				content.forEach(node => frag.append(node));
+				this.replaceWith(frag);
+			} else {
+				content.forEach(node => this.append(node));
+			}
 		}).then(() => this.dispatchEvent(new CustomEvent('import')))
 			.catch(console.error);
 	}
 
 	get imports() {
 		return this.getAttribute('imports');
+	}
+
+	get replace() {
+		return this.hasAttribute('replace');
+	}
+
+	set replace(replace) {
+		if (replace) {
+			this.setAttribute('replace', '');
+		} else {
+			this.removeAttribute('replace');
+		}
 	}
 }
 
