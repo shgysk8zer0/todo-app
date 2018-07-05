@@ -34,5 +34,5 @@ ready().then(async () => {
 		app.addEventListener('itemRemoved', console.info);
 		app.addEventListener('clear', console.info);
 		document.body.append(app);
-	});
+	}, {once: true});
 });
